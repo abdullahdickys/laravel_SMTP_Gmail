@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    \Mail::to('abdullah.dicky.syarifuddin@gmail.com')
+        ->send(new \App\Mail\PostMail('Mengirim Email Menggunakan Gmail SMTP Laravel 8', 'bdullz'));
+    return 'Terkirim';
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
